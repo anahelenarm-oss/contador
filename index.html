@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+html,body{
+margin:0;
+padding:0;
+background:transparent;
+font-family:Arial,sans-serif;
+}
+
+.banner{
+background:#f56b72;
+color:#fff;
+height:60px;
+display:flex;
+align-items:center;
+justify-content:center;
+gap:20px;
+font-weight:bold;
+font-size:20px;
+}
+
+#timer{
+font-size:24px;
+min-width:110px;
+text-align:center;
+}
+
+.texto{
+font-size:16px;
+font-weight:700;
+}
+</style>
+
+</head>
+<body>
+
+<div class="banner">
+<div id="timer">05:00</div>
+<div class="texto">⏱ ¡Oferta especial solo por hoy!</div>
+</div>
+
+<script>
+let tempo=300;
+
+function atualizar(){
+
+let minutos=Math.floor(tempo/60);
+let segundos=tempo%60;
+
+document.getElementById("timer").innerHTML=
+String(minutos).padStart(2,"0")+":"+
+String(segundos).padStart(2,"0");
+
+if(tempo>0){
+tempo--;
+}else{
+tempo=300;
+}
+
+}
+
+atualizar();
+setInterval(atualizar,1000);
+
+</script>
+
+</body>
+</html>
