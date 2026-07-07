@@ -2,148 +2,86 @@
 <html lang="es">
 
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800&display=swap" rel="stylesheet">
-
 <style>
 
-*{
+html,body{
     margin:0;
     padding:0;
-    box-sizing:border-box;
-}
-
-html,body{
     background:transparent;
-    overflow-x:hidden;
-    font-family:'Montserrat',sans-serif;
+    overflow:hidden;
+    font-family:Arial, Helvetica, sans-serif;
 }
-
-/* Barra */
 
 .banner{
 
     position:fixed;
-
     top:0;
     left:0;
 
     width:100%;
+    height:58px;
 
-    z-index:999999;
+    background:rgba(245,107,114,.55);
+
+    backdrop-filter:blur(8px);
+    -webkit-backdrop-filter:blur(8px);
 
     display:flex;
-
     justify-content:center;
-
     align-items:center;
-
     gap:18px;
 
-    padding:11px 18px;
+    color:#fff;
 
-    background:rgba(245,107,114,.63);
-
-    backdrop-filter:blur(14px);
-    -webkit-backdrop-filter:blur(14px);
-
-    border-bottom:1px solid rgba(255,255,255,.28);
-
-    box-shadow:0 6px 18px rgba(0,0,0,.12);
+    box-shadow:
+    0 4px 15px rgba(0,0,0,.18);
 
 }
 
-/* relógio */
+#timer{
 
-.timer{
-
-    color:#fff;
-
-    font-size:58px;
-
-    font-weight:800;
-
+    font-size:42px;
+    font-weight:700;
     letter-spacing:1px;
 
-    line-height:1;
-
-    text-shadow:0 2px 6px rgba(0,0,0,.18);
+    text-shadow:
+    0 2px 8px rgba(0,0,0,.30);
 
 }
 
-/* texto */
+#texto{
 
-.texto{
-
-    display:flex;
-
-    align-items:center;
-
-    gap:12px;
-
-    color:#fff;
-
-    font-size:31px;
-
-    font-weight:500;
+    font-size:24px;
+    font-weight:400;
 
     white-space:nowrap;
 
-    text-shadow:0 2px 5px rgba(0,0,0,.18);
+    text-shadow:
+    0 2px 8px rgba(0,0,0,.25);
 
 }
-
-/* ícone */
-
-.icone{
-
-    width:33px;
-
-    height:33px;
-
-    fill:#fff;
-
-    flex-shrink:0;
-
-}
-
-/* celular */
 
 @media(max-width:768px){
 
 .banner{
 
-padding:10px;
-
+height:52px;
 gap:10px;
 
 }
 
-.timer{
+#timer{
 
-font-size:34px;
-
-}
-
-.texto{
-
-font-size:20px;
-
-gap:8px;
+font-size:30px;
 
 }
 
-.icone{
+#texto{
 
-width:22px;
-
-height:22px;
+font-size:18px;
 
 }
 
@@ -157,54 +95,45 @@ height:22px;
 
 <div class="banner">
 
-<div class="timer" id="timer">
-05:00
-</div>
+<div id="timer">05:00</div>
 
-<div class="texto">
-
-<svg class="icone" viewBox="0 0 24 24">
-<path d="M15.07 1L13.93 3H10.07L8.93 1H15.07ZM7 2C5.9 2 5 2.9 5 4V5.17C3.24 6.44 2 8.53 2 11C2 14.87 5.13 18 9 18C12.87 18 16 14.87 16 11C16 8.53 14.76 6.44 13 5.17V4C13 2.9 12.1 2 11 2H7ZM9 7C9.55 7 10 7.45 10 8V11.59L12.71 14.29C13.1 14.68 13.1 15.32 12.71 15.71C12.32 16.1 11.68 16.1 11.29 15.71L8.29 12.71C8.11 12.53 8 12.28 8 12V8C8 7.45 8.45 7 9 7ZM19 5L22 8L20.59 9.41L17.59 6.41L19 5ZM5 5L6.41 6.41L3.41 9.41L2 8L5 5Z"/>
-</svg>
-
-<span>¡Oferta especial solo por hoy!</span>
-
+<div id="texto">
+🔥 ¡Oferta especial solo por hoy!
 </div>
 
 </div>
 
 <script>
 
-let tempo = 300;
+let tiempo=300;
 
-function atualizar(){
+function actualizar(){
 
-let minutos=Math.floor(tempo/60);
-
-let segundos=tempo%60;
+let minutos=Math.floor(tiempo/60);
+let segundos=tiempo%60;
 
 document.getElementById("timer").innerHTML=
-String(minutos).padStart(2,"0")+":"+
-String(segundos).padStart(2,"0");
+String(minutos).padStart(2,'0')+
+":"+
+String(segundos).padStart(2,'0');
 
-if(tempo<=0){
+if(tiempo>0){
 
-tempo=300;
+tiempo--;
 
 }else{
 
-tempo--;
+tiempo=300;
 
 }
 
 }
 
-atualizar();
+actualizar();
 
-setInterval(atualizar,1000);
+setInterval(actualizar,1000);
 
 </script>
 
 </body>
-
 </html>
